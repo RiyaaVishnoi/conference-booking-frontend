@@ -9,7 +9,7 @@ function RoomList() {
     const fetchRooms = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await api.get('/api/rooms/', {
+        const response = await api.get('/rooms/', {
           headers: {
             Authorization: `Token ${token}`,
           },
@@ -24,12 +24,12 @@ function RoomList() {
   }, []);
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="section">
       <h2>Available Rooms</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul>
         {rooms.map((room) => (
-          <li key={room.id} style={{ marginBottom: '15px' }}>
+          <li key={room.id}>
             <strong>{room.name}</strong><br />
             Location: {room.location}<br />
             Capacity: {room.capacity}

@@ -7,22 +7,25 @@ function Login({ onLogin }) {
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
+  e.preventDefault();
+  setError('');
 
-    try {
-      const response = await api.post('/auth/token/login/', {
-        username,
-        password,
-      });
+  try {
+    const response = await api.post('/auth/token/login/', {
+      username,
+      password,
+    });
 
-      const token = response.data.auth_token;
-      localStorage.setItem('token', token); // Save token in browser
-      onLogin(); // Notify App
-    } catch (err) {
-      setError('Login failed. Check your credentials.');
-    }
-  };
+    localStorage.setItem('token', response.data.token); // ✅ correct key now
+    localStorage.setItem('is_staff', response.data.is_staff); // ✅ store admin status
+    localStorage.setItem('username', response.data.username); // (optional for UI)
+
+    onLogin(); // Notify App to switch view
+  } catch (err) {
+    setError('Login failed. Check your credentials.');
+  }
+};
+
 
   return (
     <div style={{ textAlign: 'center' }}>
