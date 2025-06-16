@@ -72,7 +72,7 @@ function MyBookings() {
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {bookings.map((b) => (
             <li key={b.id} style={{ marginBottom: '15px' }}>
-              <strong>{b.room}</strong><br />
+              <strong>{b.room_name}</strong><br />
               Date: {b.date}<br />
               Time: {b.time}<br />
               Purpose: {b.purpose}<br />
