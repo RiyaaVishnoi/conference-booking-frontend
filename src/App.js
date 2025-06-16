@@ -8,9 +8,11 @@ import AdminBookings from './AdminBookings';
 import AdminRoomManager from './AdminRoomManager';
 import Register from './Register';
 import AdminReserveForm from './AdminReserveForm';
+import ManageUsers from './ManageUsers';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [showUsers, setShowUsers] = useState(false);
 
   const handleLogin = () => {
     setLoggedIn(true);
@@ -22,10 +24,9 @@ function App() {
 
       {!loggedIn ? (
         <>
-        <Login onLogin={handleLogin} />
-        <Register />
+          <Login onLogin={handleLogin} />
+          <Register />
         </>
-
       ) : (
         <>
           <div style={{ textAlign: 'center', marginBottom: '16px' }}>
@@ -41,10 +42,20 @@ function App() {
           <RoomList />
           <BookingForm />
           <MyBookings />
-          {localStorage.getItem('is_staff') === 'true' && <AdminBookings />}
-          {localStorage.getItem('is_staff') === 'true' && <AdminRoomManager />}
-          {localStorage.getItem('is_staff') === 'true' && <AdminReserveForm />}
 
+          {localStorage.getItem('is_staff') === 'true' && (
+            <>
+              <AdminBookings />
+              <AdminRoomManager />
+              <AdminReserveForm />
+              <div style={{ margin: '20px 0' }}>
+                <button onClick={() => setShowUsers(!showUsers)}>
+                  {showUsers ? 'Hide' : 'Show'} Manage Users
+                </button>
+              </div>
+              {showUsers && <ManageUsers />}
+            </>
+          )}
         </>
       )}
     </div>
