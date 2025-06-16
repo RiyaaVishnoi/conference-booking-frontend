@@ -7,7 +7,7 @@ function AdminBookings() {
 
   const fetchAllBookings = async () => {
     try {
-      const response = await api.get('/bookings/');
+      const response = await api.get('/api/bookings/');
       setBookings(response.data);
     } catch (err) {
       setError('Failed to fetch bookings.');

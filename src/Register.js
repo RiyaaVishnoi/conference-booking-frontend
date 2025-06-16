@@ -13,7 +13,7 @@ function Register() {
     setSuccess('');
 
     try {
-      await api.post('/auth/register/', { username, password });
+      await api.post('/api/auth/register/', { username, password });
       setSuccess('Registration successful! You can now log in.');
       setUsername('');
       setPassword('');

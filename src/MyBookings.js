@@ -11,7 +11,7 @@ function MyBookings() {
 
   const fetchBookings = async () => {
     try {
-      const response = await api.get('/bookings/', {
+      const response = await api.get('/api/bookings/', {
         headers: { Authorization: `Token ${token}` },
       });
       setBookings(response.data);

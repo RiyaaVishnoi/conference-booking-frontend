@@ -8,7 +8,7 @@ function AdminRoomManager() {
 
   const fetchRooms = async () => {
     try {
-      const response = await api.get('/rooms/');
+      const response = await api.get('/api/rooms/');
       setRooms(response.data);
     } catch (err) {
       console.error('Failed to fetch rooms');
@@ -21,7 +21,7 @@ function AdminRoomManager() {
       if (editId) {
         await api.put(`/rooms/${editId}/`, form);
       } else {
-        await api.post('/rooms/', form);
+        await api.post('/api/rooms/', form);
       }
       setForm({ name: '', location: '', capacity: '' });
       setEditId(null);

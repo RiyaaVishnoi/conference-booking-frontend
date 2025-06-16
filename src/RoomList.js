@@ -9,7 +9,7 @@ function RoomList() {
     const fetchRooms = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await api.get('/rooms/', {
+        const response = await api.get('/api/rooms/', {
           headers: {
             Authorization: `Token ${token}`,
           },

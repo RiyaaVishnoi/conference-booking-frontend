@@ -7,6 +7,7 @@ import './App.css';
 import AdminBookings from './AdminBookings';
 import AdminRoomManager from './AdminRoomManager';
 import Register from './Register';
+import AdminReserveForm from './AdminReserveForm';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -42,6 +43,7 @@ function App() {
           <MyBookings />
           {localStorage.getItem('is_staff') === 'true' && <AdminBookings />}
           {localStorage.getItem('is_staff') === 'true' && <AdminRoomManager />}
+          {localStorage.getItem('is_staff') === 'true' && <AdminReserveForm />}
 
         </>
       )}
