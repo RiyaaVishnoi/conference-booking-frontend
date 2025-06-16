@@ -16,9 +16,9 @@ function Login({ onLogin }) {
       password,
     });
 
-    localStorage.setItem('token', response.data.token); // ✅ correct key now
-    localStorage.setItem('is_staff', response.data.is_staff); // ✅ store admin status
-    localStorage.setItem('username', response.data.username); // (optional for UI)
+    localStorage.setItem('token', response.data.token); // correct key now
+    localStorage.setItem('is_staff', response.data.is_staff); //  store admin status
+    localStorage.setItem('username', response.data.username);
 
     onLogin(); // Notify App to switch view
   } catch (err) {
